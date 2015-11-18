@@ -130,3 +130,24 @@ Supports Thumbs: false
 	width: 120px;
 	height: auto;
 }
+
+noscript .theme-bar.slider-wrapper,
+noscript .theme-bar .nivoSlider img {
+	display: block;
+	overflow: visible;
+}
+noscript .nivoSlider {
+	overflow: visible;
+}
+noscript .theme-bar.slider-wrapper {
+	border: none;
+}
+.theme-bar .nivoSlider a {
+	background-color: #fff;
+	filter:alpha(opacity=0);
+	opacity: 0;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-khtml-opacity:0;
+}
+

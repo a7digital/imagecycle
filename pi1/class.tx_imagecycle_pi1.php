@@ -22,7 +22,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
 require_once(t3lib_extMgm::extPath('imagecycle').'lib/class.tx_imagecycle_pagerenderer.php');
 
 /**
@@ -231,17 +230,19 @@ class tx_imagecycle_pi1 extends tslib_pibase
 						$this->conf['type'] = $page['tx_imagecycle_effect'];
 						$effectChanged = true;
 					}
-					if (
-						(($page['tx_imagecycle_mode'] == 'upload' || ! $page['tx_imagecycle_mode']) && trim($page['tx_imagecycle_images']) != '') ||
-						($page['tx_imagecycle_mode'] == 'dam'         && trim($page['tx_imagecycle_damimages']) != '') ||
-						($page['tx_imagecycle_mode'] == 'dam_catedit' && trim($page['tx_imagecycle_damcategories']) != '') ||
-						$this->conf['disableRecursion'] ||
-						$page['tx_imagecycle_stoprecursion']
-					) {
-						$used_page = $page;
-						$pageID    = $used_page['uid'];
-						$this->conf['mode']          = $used_page['tx_imagecycle_mode'];
-						$this->conf['damcategories'] = $used_page['tx_imagecycle_damcategories'];
+					if ($page['tx_imagecycle_mode'] != 'recursiv' && $page['tx_imagecycle_mode']) {
+						if (
+							($page['tx_imagecycle_mode'] == 'upload'      && trim($page['tx_imagecycle_images']) != '') ||
+							($page['tx_imagecycle_mode'] == 'dam'         && trim($page['tx_imagecycle_damimages'])) ||
+							($page['tx_imagecycle_mode'] == 'dam_catedit' && trim($page['tx_imagecycle_damcategories']) != '') ||
+							$this->conf['disableRecursion'] ||
+							$page['tx_imagecycle_stoprecursion']
+						) {
+							$used_page = $page;
+							$pageID    = $used_page['uid'];
+							$this->conf['mode']          = $used_page['tx_imagecycle_mode'];
+							$this->conf['damcategories'] = $used_page['tx_imagecycle_damcategories'];
+						}
 					}
 				}
 			}
@@ -459,7 +460,7 @@ class tx_imagecycle_pi1 extends tslib_pibase
 				'tx_dam_cat',
 				" AND tx_dam_cat.uid IN (".implode(",", $damcategories).")",
 				'',
-				'tx_dam.sorting',
+				'tx_dam_mm_cat.sorting_foreign',
 				''
 			);
 			while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
@@ -845,7 +846,7 @@ class tx_imagecycle_pi1 extends tslib_pibase
 					$image = $this->cObj->stdWrap($image, $this->conf['cycle.'][$this->type.'.']['captionWrap.']);
 				}
 				// Add the noscript wrap to the firs image
-				if ($key == 0) {
+				if ($key == 0 && $this->conf['cycle.'][$this->type.'.']['noscriptWrap.']) {
 					$no_script = $this->cObj->stdWrap($image, $this->conf['cycle.'][$this->type.'.']['noscriptWrap.']);
 				}
 				$image = $this->cObj->stdWrap($image, $this->conf['cycle.'][$this->type.'.']['itemWrap.']);

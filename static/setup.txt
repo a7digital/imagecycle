@@ -335,7 +335,7 @@ plugin.tx_imagecycle_pi1 {
 }
 .tx-imagecycle-pi1-images a:hover {
 	background: none;
-	border: 0! important;
+	border: 0 !important;
 }
 .tx-imagecycle-pi1-images .imagecycle-caption {
 	position: absolute;

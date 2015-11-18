@@ -191,17 +191,19 @@ class tx_imagecycle_pi4 extends tx_imagecycle_pi1
 			$pageID    = false;
 			foreach ($GLOBALS['TSFE']->rootLine as $page) {
 				if (! $pageID) {
-					if (
-						(($page['tx_imagecycle_mode'] == 'upload' || ! $page['tx_imagecycle_mode']) && trim($page['tx_imagecycle_images']) != '') ||
-						($page['tx_imagecycle_mode'] == 'dam'         && trim($page['tx_imagecycle_damimages']) != '') ||
-						($page['tx_imagecycle_mode'] == 'dam_catedit' && trim($page['tx_imagecycle_damcategories']) != '') ||
-						$this->conf['disableRecursion'] ||
-						$page['tx_imagecycle_stoprecursion']
-					) {
-						$used_page = $page;
-						$pageID    = $used_page['uid'];
-						$this->conf['mode']          = $used_page['tx_imagecycle_mode'];
-						$this->conf['damcategories'] = $used_page['tx_imagecycle_damcategories'];
+					if ($page['tx_imagecycle_mode'] != 'recursiv' && $page['tx_imagecycle_mode']) {
+						if (
+							($page['tx_imagecycle_mode'] == 'upload'      && trim($page['tx_imagecycle_images']) != '') ||
+							($page['tx_imagecycle_mode'] == 'dam'         && trim($page['tx_imagecycle_damimages'])) ||
+							($page['tx_imagecycle_mode'] == 'dam_catedit' && trim($page['tx_imagecycle_damcategories']) != '') ||
+							$this->conf['disableRecursion'] ||
+							$page['tx_imagecycle_stoprecursion']
+						) {
+							$used_page = $page;
+							$pageID    = $used_page['uid'];
+							$this->conf['mode']          = $used_page['tx_imagecycle_mode'];
+							$this->conf['damcategories'] = $used_page['tx_imagecycle_damcategories'];
+						}
 					}
 				}
 			}
@@ -339,9 +341,9 @@ class tx_imagecycle_pi4 extends tx_imagecycle_pi1
 		$factor = 1;
 		$no_script = null;
 		$GLOBALS['TSFE']->register['key'] = $this->getContentKey();
-		$GLOBALS['TSFE']->register['imagewidth']  = $this->conf['imagewidth'] * $factor;
-		$GLOBALS['TSFE']->register['imageheight'] = $this->conf['imageheight'] * $factor;
-		$GLOBALS['TSFE']->register['showcaption'] = $this->conf['showcaption'] * $factor;
+		$GLOBALS['TSFE']->register['imagewidth']  = $this->conf['imagewidth'];
+		$GLOBALS['TSFE']->register['imageheight'] = $this->conf['imageheight'];
+		$GLOBALS['TSFE']->register['showcaption'] = $this->conf['showcaption'];
 		$GLOBALS['TSFE']->register['IMAGE_NUM_CURRENT'] = 0;
 		$GLOBALS['TSFE']->register['IMAGE_COUNT'] = count($data);
 		if (is_array($data) && count($data) > 0) {

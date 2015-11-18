@@ -1,6 +1,6 @@
 
 <!-- ###TEMPLATE_JS### begin -->
-jQuery(document).ready(function() {
+jQuery(window).load(function() {
 	<!-- ###CONTROL### -->
 	play_class = 'play';
 	jQuery('####KEY###').after('<div class="imagecycle-controller" id="###KEY###_controller"><ul><li class="first"><a id="###KEY###_first"></a></li><li class="prev"><a id="###KEY###_prev"></a></li><li class="pause<!-- ###PAUSED### --> '+play_class+'<!-- ###PAUSED### -->"><a id="###KEY###_pause"></a></li><li class="next"><a id="###KEY###_next"></a></li><li class="last"><a id="###KEY###_last"></a></li></ul></div>');
@@ -93,6 +93,9 @@ jQuery(document).ready(function() {
 
 
 <!-- ###TEMPLATE_NIVOSLIDER_JS### begin -->
+jQuery(document).ready(function() {
+	jQuery('.tx-imagecycle-pi3').show();
+});
 jQuery(window).load(function() {
 	jQuery('####KEY### img').removeAttr("height").removeAttr("width");
 	jQuery('####KEY###').nivoSlider({

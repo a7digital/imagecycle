@@ -246,17 +246,19 @@ class tx_imagecycle_pi3 extends tx_imagecycle_pi1
 			$pageID    = false;
 			foreach ($GLOBALS['TSFE']->rootLine as $page) {
 				if (! $pageID) {
-					if (
-						(($page['tx_imagecycle_mode'] == 'upload' || ! $page['tx_imagecycle_mode']) && trim($page['tx_imagecycle_images']) != '') ||
-						($page['tx_imagecycle_mode'] == 'dam'         && trim($page['tx_imagecycle_damimages']) != '') ||
-						($page['tx_imagecycle_mode'] == 'dam_catedit' && trim($page['tx_imagecycle_damcategories']) != '') ||
-						$this->conf['disableRecursion'] ||
-						$page['tx_imagecycle_stoprecursion']
-					) {
-						$used_page = $page;
-						$pageID    = $used_page['uid'];
-						$this->conf['mode']          = $used_page['tx_imagecycle_mode'];
-						$this->conf['damcategories'] = $used_page['tx_imagecycle_damcategories'];
+					if ($page['tx_imagecycle_mode'] != 'recursiv' && $page['tx_imagecycle_mode']) {
+						if (
+							($page['tx_imagecycle_mode'] == 'upload'      && trim($page['tx_imagecycle_images']) != '') ||
+							($page['tx_imagecycle_mode'] == 'dam'         && trim($page['tx_imagecycle_damimages'])) ||
+							($page['tx_imagecycle_mode'] == 'dam_catedit' && trim($page['tx_imagecycle_damcategories']) != '') ||
+							$this->conf['disableRecursion'] ||
+							$page['tx_imagecycle_stoprecursion']
+						) {
+							$used_page = $page;
+							$pageID    = $used_page['uid'];
+							$this->conf['mode']          = $used_page['tx_imagecycle_mode'];
+							$this->conf['damcategories'] = $used_page['tx_imagecycle_damcategories'];
+						}
 					}
 				}
 			}

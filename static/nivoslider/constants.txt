@@ -1,7 +1,7 @@
 plugin.tx_imagecycle_pi3 {
 
 	# cat=plugin.tx_imagecycle.nivoslider/file/010; type=file[js]; label=jQuery Nivo-Slider for Cycle: Location of the jQuery Nivo-Slider
-	file.jQueryNivo = EXT:imagecycle/res/jquery/js/jquery.nivoslider-3.1.min.js
+	file.jQueryNivo = EXT:imagecycle/res/jquery/js/jquery.nivoslider-3.2.min.js
 
 	# cat=plugin.tx_imagecycle.nivoslider/file/020; type=file[css]; label=CSS file: The path to the stylesheet file
 	file.cssFileNivo = EXT:imagecycle/res/css/nivoslider/style.css

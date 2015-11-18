@@ -130,3 +130,24 @@ Author URI: http://dev7studios.com
 	position:relative;
 	margin-right:10px;
 }
+
+.tx-imagecycle-pi3 {
+	display: none;
+}
+noscript .theme-pascal.slider-wrapper,
+noscript .theme-pascal .nivoSlider img {
+	display:block;
+	overflow: visible;
+}
+noscript .nivoSlider {
+	overflow: visible;
+}
+.theme-pascal .nivoSlider a {
+	background-color: #fff;
+	filter:alpha(opacity=0);
+	opacity: 0;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-khtml-opacity:0;
+}
+

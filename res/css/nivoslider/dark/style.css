@@ -9,14 +9,14 @@ Supports Thumbs: true
 */
 
 .theme-dark.slider-wrapper {
-    background: #222;
-    padding: 10px;
+	background: #222;
+	padding: 10px;
 }
 .theme-dark .nivoSlider {
 	position:relative;
 	background:#fff url(loading.gif) no-repeat 50% 50%;
-    margin-bottom:10px;
-    overflow: visible;
+	margin-bottom:10px;
+	overflow: visible;
 }
 .theme-dark .nivoSlider img {
 	position:absolute;
@@ -60,30 +60,30 @@ Supports Thumbs: true
 	z-index: 11;
 }
 .theme-dark .nivo-directionNav a:hover {
-    background-color: #333;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+	background-color: #333;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 .theme-dark a.nivo-nextNav {
 	background-position:-16px 50%;
 	right:0px;
 }
 .theme-dark a.nivo-prevNav {
-    background-position:11px 50%;
-    left: auto;
+	background-position:11px 50%;
+	left: auto;
 	right: 35px;
 }
 
 .theme-dark .nivo-caption {
-    font-family: Helvetica, Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 }
 .theme-dark .nivo-caption a {
-    color:#fff;
-    border-bottom:1px dotted #fff;
+	color:#fff;
+	border-bottom:1px dotted #fff;
 }
 .theme-dark .nivo-caption a:hover {
-    color:#fff;
+	color:#fff;
 }
 
 .theme-dark .nivo-controlNav.nivo-thumbs-enabled {
@@ -100,3 +100,24 @@ Supports Thumbs: true
 	width: 120px;
 	height: auto;
 }
+
+noscript .theme-dark.slider-wrapper,
+noscript .theme-dark .nivoSlider img {
+	display:block;
+	overflow: visible;
+}
+noscript .nivoSlider {
+	overflow: visible;
+}
+noscript .theme-dark.slider-wrapper {
+	background: transparent;
+}
+.theme-dark .nivoSlider a {
+	background-color: #fff;
+	filter:alpha(opacity=0);
+	opacity: 0;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-khtml-opacity:0;
+}
+

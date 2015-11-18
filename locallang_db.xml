@@ -26,6 +26,7 @@
 			<label index="tt_content.list_type_pi5">Slice-Box</label>
 			<label index="tt_content.pi_flexform.sheet_general">General</label>
 			<label index="tt_content.pi_flexform.mode">Mode</label>
+			<label index="tt_content.pi_flexform.mode.I.recursiv">Recursiv</label>
 			<label index="tt_content.pi_flexform.mode.I.upload">Upload Images</label>
 			<label index="tt_content.pi_flexform.mode.I.folder">Folder</label>
 			<label index="tt_content.pi_flexform.mode.I.rte">Upload with RTE</label>

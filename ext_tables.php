@@ -7,18 +7,21 @@ if (!defined ('TYPO3_MODE')) {
 
 // PAGE
 $tempColumns = array();
+$tempColumns['tx_imagecycle_mode'] = array(
+	'exclude' => 1,
+	'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_mode',
+	'config' => array(
+		'type' => 'select',
+		'items' => array (
+			array('LLL:EXT:imagecycle/locallang_db.xml:tt_content.pi_flexform.mode.I.recursiv', 'recursiv'),
+		),
+		'itemsProcFunc' => 'tx_imagecycle_itemsProcFunc->getModes',
+		'displayMode' => 'page',
+		'size' => 1,
+		'maxitems' => 1,
+	)
+);
 if (t3lib_extMgm::isLoaded('dam')) {
-	$tempColumns['tx_imagecycle_mode'] = array(
-		'exclude' => 1,
-		'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_mode',
-		'config' => array(
-			'type' => 'select',
-			'itemsProcFunc' => 'tx_imagecycle_itemsProcFunc->getModes',
-			'displayMode' => 'page',
-			'size' => 1,
-			'maxitems' => 1,
-		)
-	);
 	$tempColumns['tx_imagecycle_damimages'] = array(
 		'exclude' => 1,
 		'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_damimages',
@@ -68,7 +71,7 @@ if (t3lib_extMgm::isLoaded('dam')) {
 $tempColumns['tx_imagecycle_images'] = array(
 	'exclude' => 1,
 	'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_images',
-	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:dam,dam_catedit',
+	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:recursiv,,dam,dam_catedit',
 	'config' => array(
 		'type' => 'group',
 		'internal_type' => 'file',
@@ -84,7 +87,7 @@ $tempColumns['tx_imagecycle_images'] = array(
 $tempColumns['tx_imagecycle_hrefs'] = array(
 	'exclude' => 1,
 	'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_hrefs',
-	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:dam,dam_catedit',
+	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:recursiv,,dam,dam_catedit',
 	'config' => array(
 		'type' => 'text',
 		'wrap' => 'OFF',
@@ -95,7 +98,7 @@ $tempColumns['tx_imagecycle_hrefs'] = array(
 $tempColumns['tx_imagecycle_captions'] = array(
 	'exclude' => 1,
 	'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_captions',
-	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:dam,dam_catedit',
+	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:recursiv,,dam,dam_catedit',
 	'config' => array(
 		'type' => 'text',
 		'wrap' => 'OFF',
@@ -119,6 +122,7 @@ $tempColumns['tx_imagecycle_effect'] = array(
 $tempColumns['tx_imagecycle_stoprecursion'] = array(
 	'exclude' => 1,
 	'label' => 'LLL:EXT:imagecycle/locallang_db.xml:pages.tx_imagecycle_stoprecursion',
+	'displayCond' => 'FIELD:tx_imagecycle_mode:!IN:recursiv,',
 	'config' => array(
 		'type' => 'check',
 	)

@@ -27,6 +27,7 @@ lib.imagecycle {
 	captionSplit = 1
 	renderMethod = ul
 	stdWrap.preUserFunc = tx_imagecycle->getSlideshow
+	cols >
 }
 tt_content.image.20 >
 tt_content.image.20 = CASE

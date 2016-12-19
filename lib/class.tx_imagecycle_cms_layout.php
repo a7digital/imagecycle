@@ -21,6 +21,8 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 
 /**
@@ -42,13 +44,13 @@ class tx_imagecycle_cms_layout
 	function getExtensionSummary($params, &$pObj)
 	{
 		$result = null;
-		$data = t3lib_div::xml2array($params['row']['pi_flexform']);
+		$data = GeneralUtility::xml2array($params['row']['pi_flexform']);
 		if (! is_array($data)) {
 			$result = $GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.not_configured').'<br/>';
 		} else {
 			switch ($params['row']['list_type']) {
 				case "imagecycle_pi1" : {
-					$type   = "jQuery Cycle (" . ($data['data']['movement']['lDEF']['type']['vDEF'] ? implode(', ', t3lib_div::trimExplode(',', $data['data']['movement']['lDEF']['type']['vDEF'])) : $GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.from_ts')) . ")";
+					$type   = "jQuery Cycle (" . ($data['data']['movement']['lDEF']['type']['vDEF'] ? implode(', ', GeneralUtility::trimExplode(',', $data['data']['movement']['lDEF']['type']['vDEF'])) : $GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.from_ts')) . ")";
 					$result = sprintf($GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.style'), '<strong>'.$type.'</strong><br/>');
 					break;
 				}
@@ -58,7 +60,7 @@ class tx_imagecycle_cms_layout
 					break;
 				}
 				case "imagecycle_pi3" : {
-					$type   = "Nivo-Slider (" . ($data['data']['settings']['lDEF']['nivoEffect']['vDEF'] ? implode(', ', t3lib_div::trimExplode(',', $data['data']['settings']['lDEF']['nivoEffect']['vDEF'])) : $GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.from_ts')) . ")";
+					$type   = "Nivo-Slider (" . ($data['data']['settings']['lDEF']['nivoEffect']['vDEF'] ? implode(', ', GeneralUtility::trimExplode(',', $data['data']['settings']['lDEF']['nivoEffect']['vDEF'])) : $GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.from_ts')) . ")";
 					$result = sprintf($GLOBALS['LANG']->sL('LLL:EXT:imagecycle/locallang.xml:cms_layout.style'), '<strong>'.$type.'</strong><br/>');
 					break;
 				}
@@ -69,7 +71,7 @@ class tx_imagecycle_cms_layout
 				}
 			}
 		}
-		if (t3lib_extMgm::isLoaded("templavoila")) {
+		if (ExtensionManagementUtility::isLoaded("templavoila")) {
 			$result = strip_tags($result);
 		}
 		return $result;
@@ -77,8 +79,6 @@ class tx_imagecycle_cms_layout
 }
 
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/imagecycle/lib/class.tx_imagecycle_cms_layout.php'])	{
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/imagecycle/lib/class.tx_imagecycle_cms_layout.php']) {
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/imagecycle/lib/class.tx_imagecycle_cms_layout.php']);
 }
-
-?>

@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'Insert a slideshow into your page or template. Manage the images, captions and hrefs recursively in the pagetree and show it in a jQuery-Cycle, Coin-Slider, Nivo-Slider or Cross-Slider. Add media from DAM and DAM-Category. Use t3jquery for better integration with other jQuery extensions.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '2.7.7',
+	'version' => '52.7.7',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
@@ -35,5 +35,3 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance' => '',
 	'CGLcompliance_note' => '',
 );
-
-?>
